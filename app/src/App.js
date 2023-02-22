@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
 import './App.css';
+
+import { store } from './redux/store.js';
+import Main from './components/Main/Main';
+import News from './components/News/News';
+import Profile from './components/Profile/Profile';
+import Error404 from './components/Error/Error404';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      {/* <Header/> */}
+      <BrowserRouter>
+        <Routes>
+          <Route exact path='/' element={<Main />}></Route>
+          <Route exact path='/news' element={<News />}></Route>
+          <Route exact path='/profile' element={<Profile />}></Route>
+          <Route path='*' element={<Error404 />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
