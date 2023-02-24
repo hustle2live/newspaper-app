@@ -36,3 +36,52 @@
     transform: rotate(360deg);
   }
 }
+
+.active {
+  color: orange;
+}
+
+nav ul li {
+  display: inline;
+  margin: 20px;
+}
+
+body {
+  margin: 20px;
+}
+
+button,
+p,
+ul,
+li {
+  margin-left: 20px;
+}
+
+.news-list {
+  margin: 10px;
+  margin-left: 40px;
+  padding: 10px;
+  background: #61dafb2c;
+  color: rgb(61, 61, 61);
+  width: 400px;
+  cursor: pointer;
+  position: relative;
+}
+
+.news-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.delete-icon {
+  display: block;
+  /* width: 25px; */
+  /* height: 25px; */
+  content: '';
+  color: orangered;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  font-size: 24px;
+  font-weight: 600;
+}

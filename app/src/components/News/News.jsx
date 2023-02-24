@@ -1,10 +1,94 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 
-const News = () => (
-  <div>
-    <h1>News Page</h1>
-    <p>Here are the latest news!</p>
-  </div>
-);
+const News = () => {
+  const [newsArray, setNewsArray] = useState([]);
+  const [storyLimit, setStoryLimit] = useState(5);
+  const [loadingStatusMessage, setloadingStatusMessage] =
+    useState('Loading ...');
+  const [deleteStoriesArray, setDeleteStoriesArray] = useState([]);
+
+  const getNews = () => {
+    fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${storyLimit}`)
+      .then((response) =>
+        response.ok ? response.json() : Promise.reject(response)
+      )
+      .then((json) =>
+        deleteStoriesArray.length
+          ? filteringNewsState(json)
+          : setNewsArray(json)
+      )
+      .catch((error) => {
+        console.log(error);
+        setloadingStatusMessage(
+          'Oops! Something goes wrong on Loading. We have Error...'
+        );
+      });
+  };
+
+  const filteringNewsState = (json = newsArray) => {
+    if (deleteStoriesArray.length) {
+      setNewsArray(
+        json.filter(({ id }) =>
+          deleteStoriesArray.every((deleteStoryId) => deleteStoryId !== id)
+        )
+      );
+    }
+  };
+
+  const deleteNews = (postId) =>
+    fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+      method: 'DELETE'
+    }).then(setDeleteStoriesArray([...deleteStoriesArray, postId]));
+
+  useEffect(() => getNews(), [storyLimit]);
+
+  console.log(newsArray);
+  console.log('storyLimit : ' + storyLimit);
+
+  const handleStory = (id) => {
+    console.log(id);
+    if (window.confirm('are you sure to delete this News story?')) {
+      deleteNews(id);
+    } else console.log('cancel delete ' + id);
+  };
+
+  useEffect(() => filteringNewsState(), [deleteStoriesArray]);
+
+  const ShowNews = () =>
+    newsArray
+      ? newsArray.map((item) => (
+          <li className='news-list' key={item.id}>
+            <h4>{item.title}</h4>
+            <p>{item.body}</p>
+            <div className='delete-icon' onClick={() => handleStory(item.id)}>
+              X
+            </div>
+          </li>
+        ))
+      : null;
+
+  return (
+    <div>
+      <h1>News Page</h1>
+      <p>Here are the latest news!</p>
+      <div>
+        {newsArray && storyLimit !== 0 ? (
+          <>
+            {' '}
+            <ul className='news-section'>
+              <ShowNews />
+            </ul>
+            <button onClick={() => setStoryLimit(storyLimit + 5)}>
+              Get More
+            </button>
+          </>
+        ) : (
+          <p>{loadingStatusMessage}</p>
+        )}
+      </div>
+    </div>
+  );
+};
 
 export default News;
