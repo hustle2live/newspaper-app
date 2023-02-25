@@ -42,8 +42,12 @@
 }
 
 nav ul li {
-  display: inline;
+  display: inline-block;
   margin: 20px;
+}
+
+nav {
+  margin: auto 0;
 }
 
 body {
@@ -68,10 +72,27 @@ li {
   position: relative;
 }
 
-.news-section {
+.header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.news-section,
+form,
+fieldset {
   display: flex;
   flex-wrap: wrap;
 }
+
+input,
+label,
+legend {
+  margin: 5px 10px;
+}
+
+/* fieldset { */
+/* border: none; */
+/* } */
 
 .delete-icon {
   display: block;

@@ -41,32 +41,35 @@ const News = () => {
       method: 'DELETE'
     }).then(setDeleteStoriesArray([...deleteStoriesArray, postId]));
 
-  useEffect(() => getNews(), [storyLimit]);
-
-  console.log(newsArray);
-  console.log('storyLimit : ' + storyLimit);
-
-  const handleStory = (id) => {
+  const handleDeleteStory = (id) => {
     console.log(id);
     if (window.confirm('are you sure to delete this News story?')) {
       deleteNews(id);
     } else console.log('cancel delete ' + id);
   };
 
+  useEffect(() => getNews(), [storyLimit]);
+
   useEffect(() => filteringNewsState(), [deleteStoriesArray]);
 
-  const ShowNews = () =>
+  const StoryElementNews = () =>
     newsArray
       ? newsArray.map((item) => (
           <li className='news-list' key={item.id}>
             <h4>{item.title}</h4>
             <p>{item.body}</p>
-            <div className='delete-icon' onClick={() => handleStory(item.id)}>
+            <div
+              className='delete-icon'
+              onClick={() => handleDeleteStory(item.id)}
+            >
               X
             </div>
           </li>
         ))
       : null;
+
+  // console.log(newsArray);
+  // console.log('storyLimit : ' + storyLimit);
 
   return (
     <div>
@@ -77,7 +80,7 @@ const News = () => {
           <>
             {' '}
             <ul className='news-section'>
-              <ShowNews />
+              <StoryElementNews />
             </ul>
             <button onClick={() => setStoryLimit(storyLimit + 5)}>
               Get More
