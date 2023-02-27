@@ -96,8 +96,6 @@ fieldset {
 
 .delete-icon {
   display: block;
-  /* width: 25px; */
-  /* height: 25px; */
   content: '';
   color: orangered;
   position: absolute;

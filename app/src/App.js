@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectUser } from './features/userSlice';
 
 import './App.css';
 
@@ -10,17 +12,11 @@ import Error404 from './components/Error/Error404';
 import Header from './components/Header/Header';
 
 function App() {
-  const loginInfo = 0;
-
-  localStorage.setItem('loggedIn', JSON.stringify(loginInfo));
-
-  const authorized = () => JSON.parse(localStorage.getItem('loggedIn'));
-
-  console.log(authorized());
+  const user = useSelector(selectUser);
 
   return (
     <BrowserRouter>
-      <Header login={authorized} />
+      <Header login={user} />
 
       <Routes>
         <Route exact path='/' element={<Main />}></Route>
@@ -28,7 +24,7 @@ function App() {
         <Route
           exact
           path='/profile'
-          element={authorized() ? <Profile /> : <Navigate to='/' replace />}
+          element={user ? <Profile /> : <Navigate to='/' replace />}
         ></Route>
         <Route path='*' element={<Error404 />}></Route>
       </Routes>

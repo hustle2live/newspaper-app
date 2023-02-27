@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { logout, selectUser } from '../../features/userSlice';
 
 export const LogoutForm = () => {
@@ -11,6 +10,7 @@ export const LogoutForm = () => {
   const handleLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
+    localStorage.removeItem('user');
   };
 
   return (

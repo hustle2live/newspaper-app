@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import { login } from '../../features/userSlice';
+import { database as db } from '../../app/database';
+import { validateUser } from '../../app/validate';
 
 export const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -22,13 +26,18 @@ export const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(
-      login({
-        name: username,
-        password: password,
-        loggedIn: true
-      })
-    );
+    const userData = {
+      name: username,
+      password: password
+    };
+
+    if (validateUser(db, userData)) {
+      dispatch(login(userData));
+      localStorage.setItem('user', JSON.stringify(userData));
+      return navigate('/profile');
+    }
+
+    return alert("Ім'я користувача або пароль введено неправильно");
   };
 
   return (
