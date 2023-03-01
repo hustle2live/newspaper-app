@@ -1,8 +1,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import translationEN from './features/translations/translationEN.json';
-import translationUA from './features/translations/translationUA.json';
+import translationEN from './translations/translationEN.json';
+import translationUA from './translations/translationUA.json';
 
 i18n.use(initReactI18next).init({
   // we init with resources

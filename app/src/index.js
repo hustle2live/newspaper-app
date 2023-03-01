@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import store from './app/store';
 
-import './i18n';
+import './features/i18next/i18n';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
