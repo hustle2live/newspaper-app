@@ -5,23 +5,44 @@ import { LogoutForm } from '../Login/Logout';
 
 const Header = (props) => {
   const user = props.login;
+  const t = props.t;
+  const changeLanguage = props.changeLanguage;
 
   return (
     <div className='header'>
       <nav>
         <ul>
           <li className='header-links'>
-            <NavLink to='/'>Main </NavLink>
+            <NavLink to='/'>{t('main-link')} </NavLink>
           </li>
           <li>
-            <NavLink to='/news'>News </NavLink>
+            <NavLink to='/news'>{t('news-link')} </NavLink>
           </li>
           <li>
-            <NavLink to='/profile'>Profile </NavLink>
+            <NavLink to='/profile'>{t('profile-link')} </NavLink>
           </li>
-          <li>{user ? <LogoutForm /> : <LoginForm />}</li>
+          <li>
+            <p className='welcome-p'>{t('welcome')}</p>
+          </li>
+          <li>{user ? <LogoutForm t={t} /> : <LoginForm t={t} />}</li>
         </ul>
       </nav>
+      <div className='lng-buttons-div'>
+        <button
+          id='lng-ua'
+          className='language-btn'
+          onClick={() => changeLanguage('ua')}
+        >
+          ua
+        </button>
+        <button
+          id='lng-en'
+          className='language-btn'
+          onClick={() => changeLanguage('en')}
+        >
+          en
+        </button>
+      </div>
     </div>
   );
 };

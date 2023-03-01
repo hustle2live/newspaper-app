@@ -1,0 +1,13 @@
+{
+    "welcome": "Welcome to React and react-i18next",
+    "profile-link":"Profile",
+    "news-link":"News", 
+    "main-link": "Main",
+    "hello" : "Hello",
+    "logout" : "Logout",
+    "login-error" : "Username or password entered incorrectly",
+    "username" : "Username",
+    "password" : "Password",
+    "sign-in": "Sign In",
+    "submit" : "Submit"
+}

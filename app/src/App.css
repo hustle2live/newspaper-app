@@ -91,7 +91,8 @@ legend {
 }
 
 fieldset {
-  border: 1px solid lightgrey;
+  border: 1px 1px solid lightgrey;
+  border-radius: 25px;
 }
 
 .delete-icon {
@@ -109,19 +110,21 @@ fieldset {
   display: flex;
 }
 
-.wellcome-h1 {
+.welcome-header {
   font-weight: 400;
+  font-size: 20px;
 }
 
 .header-username {
-  font-weight: 400;
+  font-weight: 600;
   color: violet;
   text-transform: capitalize;
   margin: auto 5px;
 }
 
-.logout-btn {
-  background-color: black;
+.logout-btn,
+.language-btn {
+  background-color: rgba(0, 0, 0, 0.87);
   color: white;
   padding: 8px;
   margin: auto 15px;
@@ -137,4 +140,44 @@ fieldset {
 
 .logout-btn:active {
   box-shadow: 5px 3px 5px #282c34;
+}
+
+.language-btn {
+  background: #838383;
+  margin: 5px;
+}
+
+.language-btn:hover {
+  background-color: beige;
+  color: black;
+}
+
+.language-btn:active,
+.selected {
+  background: pink;
+  color: black;
+  font-weight: bold;
+}
+
+.lng-buttons-div {
+  position: absolute;
+  top: 20px;
+  right: 150px;
+}
+
+.welcome-p {
+  font-size: 20px;
+  font-style: italic;
+}
+
+input[type='name'],
+input[type='password'] {
+  border: transparent;
+  max-width: 100px;
+  margin-left: 0;
+}
+
+button,
+input {
+  cursor: pointer;
 }

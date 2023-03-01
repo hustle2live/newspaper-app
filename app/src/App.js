@@ -11,12 +11,22 @@ import Profile from './components/Profile/Profile';
 import Error404 from './components/Error/Error404';
 import Header from './components/Header/Header';
 
-function App() {
+import { useTranslation } from 'react-i18next';
+
+const App = () => {
   const user = useSelector(selectUser);
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
+  console.log(i18n.language);
 
   return (
     <BrowserRouter>
-      <Header login={user} />
+      <Header login={user} changeLanguage={changeLanguage} t={t} i18n={i18n} />
 
       <Routes>
         <Route exact path='/' element={<Main />}></Route>
@@ -30,6 +40,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

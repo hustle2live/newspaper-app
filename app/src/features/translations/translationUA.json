@@ -1,0 +1,13 @@
+{
+    "welcome": "Ласкаво просимо до React та react-i18next",
+    "profile-link":"Профіль",
+    "news-link":"Новини", 
+    "main-link": "Головна",
+    "hello" : "Привіт",
+    "logout" : "Вихід",
+    "login-error" : "Ім'я користувача або пароль введено неправильно",
+    "username" : "Логін",
+    "password" : "Пароль",
+    "sign-in": "Увійти",
+    "submit" : "Вхід"
+}

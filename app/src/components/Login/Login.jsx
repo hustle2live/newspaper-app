@@ -6,12 +6,14 @@ import { login } from '../../features/userSlice';
 import { database as db } from '../../app/database';
 import { validateUser } from '../../app/validate';
 
-export const LoginForm = () => {
+export const LoginForm = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const t = props.t;
 
   const onChangeUsername = (e) => {
     const username = e.target.value;
@@ -37,28 +39,28 @@ export const LoginForm = () => {
       return navigate('/profile');
     }
 
-    return alert("Ім'я користувача або пароль введено неправильно");
+    return alert(t('login-error'));
   };
 
   return (
     <form action='#' onSubmit={(e) => handleSubmit(e)}>
       <fieldset>
-        <legend>Sign In</legend>
-        <label htmlFor='userName'>Username </label>
+        <legend>{t('sign-in')}</legend>
+        <label htmlFor='userName'>{t('username')} </label>
         <input
           type='name'
           id='userName'
           value={username}
           onChange={(e) => onChangeUsername(e)}
         />
-        <label htmlFor='userPassword'>Password</label>
+        <label htmlFor='userPassword'>{t('password')}</label>
         <input
           type='password'
           id='userPassword'
           value={password}
           onChange={(e) => onChangePassword(e)}
         />
-        <input type='submit' value='Submit' />
+        <input type='submit' value={t('submit')} />
       </fieldset>
     </form>
   );
