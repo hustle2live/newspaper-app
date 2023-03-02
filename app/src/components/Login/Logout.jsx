@@ -15,8 +15,13 @@ export const LogoutForm = (props) => {
   };
 
   return (
-    <Stack direction='row' spacing={1} justifyContent={'flex-end'}>
-      <Box>
+    <Stack
+      direction='row'
+      spacing={1}
+      justifyContent={'flex-end'}
+      sx={{ p: 0, pt: 1, m: 0, mt: 1 }}
+    >
+      <Box sx={{ pb: 0 }}>
         <Typography variant='body1' component='p'>
           {t('hello')},{' '}
           <Typography variant='h6' component='span' color={'lightblue'}>
@@ -25,13 +30,12 @@ export const LogoutForm = (props) => {
         </Typography>
       </Box>
 
-      <Box alignSelf={'flex-end'}>
+      <Box sx={{ pb: 0 }}>
         <Button
           id='logout-btn'
           size='small'
           variant='standart'
           onClick={(e) => handleLogout(e)}
-          sx={{ pb: 1 }}
         >
           {t('logout')}
         </Button>
