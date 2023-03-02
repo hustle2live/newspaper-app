@@ -1,7 +1,19 @@
-import React from 'react';
+import * as React from 'react';
+
 import { NavLink } from 'react-router-dom';
 import { LoginForm } from '../Login/Login';
 import { LogoutForm } from '../Login/Logout';
+
+import {
+  AppBar,
+  Toolbar,
+  Breadcrumbs,
+  Button,
+  Grid,
+  Typography,
+  Box,
+  Link
+} from '@mui/material';
 
 const Header = (props) => {
   const user = props.login;
@@ -9,41 +21,61 @@ const Header = (props) => {
   const changeLanguage = props.changeLanguage;
 
   return (
-    <div className='header'>
-      <nav>
-        <ul>
-          <li className='header-links'>
-            <NavLink to='/'>{t('main-link')} </NavLink>
-          </li>
-          <li>
-            <NavLink to='/news'>{t('news-link')} </NavLink>
-          </li>
-          <li>
-            <NavLink to='/profile'>{t('profile-link')} </NavLink>
-          </li>
-          <li>
-            <p className='welcome-p'>{t('welcome')}</p>
-          </li>
-          <li>{user ? <LogoutForm t={t} /> : <LoginForm t={t} />}</li>
-        </ul>
-      </nav>
-      <div className='lng-buttons-div'>
-        <button
-          id='lng-ua'
-          className='language-btn'
-          onClick={() => changeLanguage('ua')}
+    <AppBar position='static' sx={{ width: `100%` }}>
+      <Toolbar>
+        <Grid
+          container
+          spacing={2}
+          direction='row'
+          justifyContent='space-between'
+          alignItems='center'
         >
-          ua
-        </button>
-        <button
-          id='lng-en'
-          className='language-btn'
-          onClick={() => changeLanguage('en')}
-        >
-          en
-        </button>
-      </div>
-    </div>
+          <Grid item sm={3}>
+            <Typography variant='subtitle2' component='h1'>
+              {t('welcome')}
+            </Typography>
+          </Grid>
+
+          <Grid item sm={3}>
+            <Breadcrumbs aria-label='breadcrumb'>
+              <NavLink to='/'>{t('main-link')}</NavLink>
+
+              <NavLink to='/news' underline='hover'>
+                {t('news-link')}
+              </NavLink>
+
+              <NavLink to='/profile' underline='hover'>
+                {t('profile-link')}
+              </NavLink>
+            </Breadcrumbs>
+          </Grid>
+
+          <Grid item sm={5} m={'auto'} mb={1}>
+            {user ? <LogoutForm t={t} /> : <LoginForm t={t} />}
+          </Grid>
+
+          <Grid item sm={1}>
+            <Box sx={({ m: 0 }, { p: 0 })}>
+              <Button
+                id='lng-ua'
+                onClick={() => changeLanguage('ua')}
+                variant='standart'
+              >
+                ua
+              </Button>
+
+              <Button
+                id='lng-en'
+                onClick={() => changeLanguage('en')}
+                variant='standart'
+              >
+                en
+              </Button>
+            </Box>
+          </Grid>
+        </Grid>
+      </Toolbar>
+    </AppBar>
   );
 };
 

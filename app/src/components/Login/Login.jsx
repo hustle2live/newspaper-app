@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { login } from '../../features/userSlice';
 import { database as db } from '../../app/database';
 import { validateUser } from '../../app/validate';
+import { Button, TextField, Typography, Box, Stack } from '@mui/material';
 
 export const LoginForm = (props) => {
   const [username, setUsername] = useState('');
@@ -43,25 +45,48 @@ export const LoginForm = (props) => {
   };
 
   return (
-    <form action='#' onSubmit={(e) => handleSubmit(e)}>
-      <fieldset>
-        <legend>{t('sign-in')}</legend>
-        <label htmlFor='userName'>{t('username')} </label>
-        <input
+    <Stack direction='row' spacing={1} justifyContent={'flex-end'}>
+      <Box mb={0} mt={'auto'}>
+        <Typography variant='body1' component='p' sx={{ p: 1 }}>
+          {t('login')} {':'}
+        </Typography>
+      </Box>
+
+      <Box pb={1}>
+        <TextField
+          label={t('username')}
           type='name'
           id='userName'
           value={username}
           onChange={(e) => onChangeUsername(e)}
+          variant='standard'
+          sx={{ width: 120 }}
         />
-        <label htmlFor='userPassword'>{t('password')}</label>
-        <input
+      </Box>
+
+      <Box pb={1}>
+        <TextField
+          label={t('password')}
           type='password'
           id='userPassword'
           value={password}
           onChange={(e) => onChangePassword(e)}
+          variant='standard'
+          sx={{ width: 120 }}
         />
-        <input type='submit' value={t('submit')} />
-      </fieldset>
-    </form>
+      </Box>
+
+      <Box alignSelf={'flex-end'}>
+        <Button
+          id='submit-btn'
+          size='small'
+          variant='standart'
+          onClick={(e) => handleSubmit(e)}
+          sx={{ pb: 1 }}
+        >
+          {t('submit')}
+        </Button>
+      </Box>
+    </Stack>
   );
 };

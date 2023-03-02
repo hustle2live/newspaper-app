@@ -8,6 +8,6 @@
     "login-error" : "Username or password entered incorrectly",
     "username" : "Username",
     "password" : "Password",
-    "sign-in": "Sign In",
+    "login": "Log In",
     "submit" : "Submit"
 }
