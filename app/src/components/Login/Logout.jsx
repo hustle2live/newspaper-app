@@ -19,7 +19,7 @@ export const LogoutForm = (props) => {
       <Box>
         <Typography variant='body1' component='p'>
           {t('hello')},{' '}
-          <Typography variant='h6' component='span' color={'yellow'}>
+          <Typography variant='h6' component='span' color={'lightblue'}>
             {user.name}
           </Typography>
         </Typography>

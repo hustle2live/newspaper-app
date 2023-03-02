@@ -8,6 +8,31 @@ import { database as db } from '../../app/database';
 import { validateUser } from '../../app/validate';
 import { Button, TextField, Typography, Box, Stack } from '@mui/material';
 
+import { styled } from '@mui/material/styles';
+
+const CssTextField = styled(TextField)({
+  '& label': {
+    color: 'lightblue'
+  },
+  '& label.Mui-focused': {
+    color: 'white'
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'white'
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'white'
+    },
+    '&:hover fieldset': {
+      borderColor: 'white'
+    },
+    '&.Mui-focused fieldset': {
+      borderColor: 'white'
+    }
+  }
+});
+
 export const LoginForm = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -52,27 +77,34 @@ export const LoginForm = (props) => {
         </Typography>
       </Box>
 
-      <Box pb={1}>
-        <TextField
+      <Box
+        component='form'
+        sx={{
+          '& .MuiTextField-root': { m: 1, width: '120' }
+        }}
+        noValidate
+        autoComplete='off'
+      >
+        <CssTextField
           label={t('username')}
           type='name'
           id='userName'
           value={username}
           onChange={(e) => onChangeUsername(e)}
-          variant='standard'
+          variant='outlined'
           sx={{ width: 120 }}
+          size='small'
         />
-      </Box>
 
-      <Box pb={1}>
-        <TextField
+        <CssTextField
           label={t('password')}
           type='password'
           id='userPassword'
           value={password}
           onChange={(e) => onChangePassword(e)}
-          variant='standard'
+          variant='outlined'
           sx={{ width: 120 }}
+          size='small'
         />
       </Box>
 

@@ -25,7 +25,12 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Header login={user} changeLanguage={changeLanguage} t={t} i18n={i18n} />
+      <Header
+        user={user}
+        changeLanguage={changeLanguage}
+        t={t}
+        currentLng={i18n.language}
+      />
 
       <Routes>
         <Route exact path='/' element={<Main />}></Route>

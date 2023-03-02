@@ -8,17 +8,21 @@ import {
   AppBar,
   Toolbar,
   Breadcrumbs,
-  Button,
   Grid,
   Typography,
-  Box,
+  ToggleButton,
+  ToggleButtonGroup,
   Link
 } from '@mui/material';
 
 const Header = (props) => {
-  const user = props.login;
-  const t = props.t;
-  const changeLanguage = props.changeLanguage;
+  const { user, t, changeLanguage, currentLng } = props;
+
+  const [alignment, setAlignment] = React.useState(currentLng);
+
+  const handleAlignment = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
 
   return (
     <AppBar position='static' sx={{ width: `100%` }}>
@@ -37,15 +41,23 @@ const Header = (props) => {
           </Grid>
 
           <Grid item sm={3}>
-            <Breadcrumbs aria-label='breadcrumb'>
-              <NavLink to='/'>{t('main-link')}</NavLink>
-
-              <NavLink to='/news' underline='hover'>
-                {t('news-link')}
+            <Breadcrumbs aria-label='breadcrumb' color='#fff'>
+              <NavLink to='/'>
+                <Link href='#' component='span' color='#fff'>
+                  {t('main-link')}
+                </Link>
               </NavLink>
 
-              <NavLink to='/profile' underline='hover'>
-                {t('profile-link')}
+              <NavLink to='/news'>
+                <Link href='#' component='span' color='#fff'>
+                  {t('news-link')}
+                </Link>
+              </NavLink>
+
+              <NavLink to='/profile'>
+                <Link href='#' component='span' color='#fff'>
+                  {t('profile-link')}
+                </Link>
               </NavLink>
             </Breadcrumbs>
           </Grid>
@@ -55,23 +67,28 @@ const Header = (props) => {
           </Grid>
 
           <Grid item sm={1}>
-            <Box sx={({ m: 0 }, { p: 0 })}>
-              <Button
-                id='lng-ua'
+            <ToggleButtonGroup
+              color='warning'
+              value={alignment}
+              exclusive
+              onChange={handleAlignment}
+              aria-label='text alignment'
+            >
+              <ToggleButton
+                value='ua'
+                aria-label='ua-language'
                 onClick={() => changeLanguage('ua')}
-                variant='standart'
               >
                 ua
-              </Button>
-
-              <Button
-                id='lng-en'
+              </ToggleButton>
+              <ToggleButton
+                value='en'
+                aria-label='en-language'
                 onClick={() => changeLanguage('en')}
-                variant='standart'
               >
                 en
-              </Button>
-            </Box>
+              </ToggleButton>
+            </ToggleButtonGroup>
           </Grid>
         </Grid>
       </Toolbar>

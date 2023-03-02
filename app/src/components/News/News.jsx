@@ -1,5 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import { useState, useEffect } from 'react';
+
+import { Container, Grid, Typography, IconButton } from '@mui/material';
+
+import Close from '@mui/icons-material/Close';
 
 const News = () => {
   const [newsArray, setNewsArray] = useState([]);
@@ -41,12 +45,10 @@ const News = () => {
       method: 'DELETE'
     }).then(setDeleteStoriesArray([...deleteStoriesArray, postId]));
 
-  const handleDeleteStory = (id) => {
-    console.log(id);
-    if (window.confirm('are you sure to delete this News story?')) {
-      deleteNews(id);
-    } else console.log('cancel delete ' + id);
-  };
+  const handleDeleteStory = (id) =>
+    window.confirm('are you sure to delete this News story?')
+      ? deleteNews(id)
+      : null;
 
   useEffect(() => getNews(), [storyLimit]);
 
@@ -55,16 +57,17 @@ const News = () => {
   const StoryElementNews = () =>
     newsArray
       ? newsArray.map((item) => (
-          <li className='news-list' key={item.id}>
-            <h4>{item.title}</h4>
-            <p>{item.body}</p>
-            <div
-              className='delete-icon'
-              onClick={() => handleDeleteStory(item.id)}
-            >
-              X
-            </div>
-          </li>
+          <Grid item key={item.id}>
+            <Typography variant='h4' component='title'>
+              {item.title}
+            </Typography>
+            <Typography variant='body1' component='p'>
+              {item.body}
+            </Typography>
+            <IconButton onClick={() => handleDeleteStory(item.id)}>
+              <Close />
+            </IconButton>
+          </Grid>
         ))
       : null;
 
@@ -72,16 +75,16 @@ const News = () => {
   // console.log('storyLimit : ' + storyLimit);
 
   return (
-    <div>
+    <Container>
       <h1>News Page</h1>
       <p>Here are the latest news!</p>
       <div>
         {newsArray && storyLimit !== 0 ? (
           <>
             {' '}
-            <ul className='news-section'>
+            <Grid container>
               <StoryElementNews />
-            </ul>
+            </Grid>
             <button onClick={() => setStoryLimit(storyLimit + 5)}>
               Get More
             </button>
@@ -90,7 +93,7 @@ const News = () => {
           <p>{loadingStatusMessage}</p>
         )}
       </div>
-    </div>
+    </Container>
   );
 };
 
