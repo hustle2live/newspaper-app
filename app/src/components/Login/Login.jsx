@@ -70,9 +70,22 @@ export const LoginForm = (props) => {
   };
 
   return (
-    <Stack direction='row' spacing={1} justifyContent={'flex-end'}>
-      <Box mb={0} mt={'auto'}>
-        <Typography variant='body1' component='p' sx={{ p: 1 }}>
+    <Stack
+      direction='row'
+      spacing={1}
+      justifyContent={'flex-end'}
+      pt={1}
+      mr={1}
+    >
+      <Box alignSelf={'center'}>
+        <Typography
+          variant='body1'
+          component='p'
+          sx={{
+            p: 1,
+            display: { xs: 'none', lg: 'block', whiteSpace: 'nowrap' }
+          }}
+        >
           {t('login')} {':'}
         </Typography>
       </Box>
@@ -80,7 +93,10 @@ export const LoginForm = (props) => {
       <Box
         component='form'
         sx={{
-          '& .MuiTextField-root': { m: 1, width: '120' }
+          '& .MuiTextField-root': {
+            m: { xs: 0.5, sm: 0.5 },
+            spacing: { xs: 0, sm: 1 }
+          }
         }}
         noValidate
         autoComplete='off'
@@ -92,8 +108,8 @@ export const LoginForm = (props) => {
           value={username}
           onChange={(e) => onChangeUsername(e)}
           variant='outlined'
-          sx={{ width: 120 }}
           size='small'
+          sx={{ width: { xs: '40%', sm: 'auto', md: 120, lg: 150 } }}
         />
 
         <CssTextField
@@ -103,18 +119,18 @@ export const LoginForm = (props) => {
           value={password}
           onChange={(e) => onChangePassword(e)}
           variant='outlined'
-          sx={{ width: 120 }}
           size='small'
+          sx={{ width: { xs: '40%', sm: 'auto', md: 120, lg: 150 } }}
         />
       </Box>
 
-      <Box alignSelf={'flex-end'}>
+      <Box alignSelf={'center'} sx={{ p: 0, m: { xs: 0, sm: 1 } }}>
         <Button
           id='submit-btn'
           size='small'
           variant='standart'
           onClick={(e) => handleSubmit(e)}
-          sx={{ pb: 1 }}
+          sx={{ p: { xs: '10px 0', sm: 1 } }}
         >
           {t('submit')}
         </Button>

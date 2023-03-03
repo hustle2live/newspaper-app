@@ -22,11 +22,15 @@ export const LogoutForm = (props) => {
       sx={{ p: 0, pt: 1, m: 0, mt: 1 }}
     >
       <Box sx={{ pb: 0 }}>
-        <Typography variant='body1' component='p'>
+        <Typography
+          variant='body1'
+          component='p'
+          sx={{ display: { xs: 'none', sm: 'inline' } }}
+        >
           {t('hello')},{' '}
-          <Typography variant='h6' component='span' color={'lightblue'}>
-            {user.name}
-          </Typography>
+        </Typography>{' '}
+        <Typography variant='h6' component='span' color={'lightblue'}>
+          {user.name}
         </Typography>
       </Box>
 

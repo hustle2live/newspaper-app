@@ -15,6 +15,22 @@ import {
   Link
 } from '@mui/material';
 
+import { styled } from '@mui/material/styles';
+
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    color: 'orange',
+    paddingTop: '15px'
+  }
+}));
+
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.down('sm')]: {
+    color: 'orange',
+    spacing: 3
+  }
+}));
+
 const Header = (props) => {
   const { user, t, changeLanguage, currentLng } = props;
 
@@ -26,21 +42,27 @@ const Header = (props) => {
 
   return (
     <AppBar position='static' sx={{ width: `100%` }}>
-      <Toolbar>
+      <Toolbar
+        sx={{
+          p: { xs: 0.5, sm: 1 }
+        }}
+      >
         <Grid
           container
-          spacing={2}
+          sx={{
+            spacing: { xs: 0, sm: 1, md: 2 }
+          }}
           direction='row'
           justifyContent='space-between'
           alignItems='center'
         >
-          <Grid item sm={3}>
-            <Typography variant='subtitle2' component='h1'>
+          <Grid item xs={6} sm={3}>
+            <Typography variant='subtitle2' component='h1' p={1}>
               {t('welcome')}
             </Typography>
           </Grid>
 
-          <Grid item sm={3}>
+          <Grid item xs={6} sm={3}>
             <Breadcrumbs aria-label='breadcrumb' color='#fff'>
               <NavLink to='/'>
                 <Link href='#' component='span' color='#fff'>
@@ -62,17 +84,37 @@ const Header = (props) => {
             </Breadcrumbs>
           </Grid>
 
-          <Grid item sm={5} m={'auto'} mb={1}>
+          <Grid
+            item
+            xs={8}
+            sm={4.5}
+            md={5}
+            m={'auto'}
+            mb={1}
+            sx={{ order: { xs: -1, sm: 0 } }}
+          >
             {user ? <LogoutForm t={t} /> : <LoginForm t={t} />}
           </Grid>
 
-          <Grid item sm={1}>
+          <Grid
+            item
+            xs={4}
+            sm={1.5}
+            md={1}
+            sx={{
+              order: { xs: -2, sm: 0 }
+            }}
+          >
             <ToggleButtonGroup
               color='warning'
               value={alignment}
               exclusive
               onChange={handleAlignment}
-              aria-label='text alignment'
+              aria-label='language select'
+              sx={{
+                padding: { sm: 0 },
+                margin: { xs: 1, sm: 'auto' }
+              }}
             >
               <ToggleButton
                 value='ua'
