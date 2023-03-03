@@ -88,11 +88,21 @@ const News = () => {
                 </IconButton>
               </CardActions>
               <CardContent>
-                <Typography variant='h6' component='h4' mt={-5} width={'90%'}>
+                <Typography
+                  variant='h6'
+                  component='h4'
+                  mt={-5}
+                  width={'90%'}
+                  sx={{ '&:first-letter': { textTransform: 'uppercase' } }}
+                >
                   {item.title}
                 </Typography>
                 <Divider sx={{ m: 1, ml: 0 }} />
-                <Typography variant='body1' component='p'>
+                <Typography
+                  variant='body1'
+                  component='p'
+                  sx={{ '&:first-letter': { textTransform: 'uppercase' } }}
+                >
                   {item.body}
                 </Typography>
               </CardContent>
@@ -100,9 +110,6 @@ const News = () => {
           </Grid>
         ))
       : null;
-
-  // console.log(newsArray);
-  // console.log('storyLimit : ' + storyLimit);
 
   return (
     <Container>
