@@ -41,7 +41,7 @@ const Header = (props) => {
   };
 
   return (
-    <AppBar position='static' sx={{ width: `100%` }}>
+    <AppBar position='static' sx={{ width: `100%` }} color={'secondary'}>
       <Toolbar
         sx={{
           p: { xs: 0.5, sm: 1 }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Container, Typography } from '@mui/material';
 
 const Main = () => (
-  <Container>
+  <Container m={'120px'}>
     <Typography variant='h2' component='h2'>
       Main Page
     </Typography>

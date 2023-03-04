@@ -127,6 +127,7 @@ export const LoginForm = (props) => {
       <Box alignSelf={'center'} sx={{ p: 0, m: { xs: 0, sm: 1 } }}>
         <Button
           id='submit-btn'
+          type='submit'
           size='small'
           variant='standart'
           onClick={(e) => handleSubmit(e)}

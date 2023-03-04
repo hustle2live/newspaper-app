@@ -35,20 +35,17 @@ const News = () => {
       .catch((error) => {
         console.log(error);
         setloadingStatusMessage(
-          'Oops! Something goes wrong on Loading. We have Error...'
+          'Error! Something goes wrong on Loading news...'
         );
       });
   };
 
-  const filteringNewsState = (json = newsArray) => {
-    if (deleteStoriesArray.length) {
-      setNewsArray(
-        json.filter(({ id }) =>
-          deleteStoriesArray.every((deleteStoryId) => deleteStoryId !== id)
-        )
-      );
-    }
-  };
+  const filteringNewsState = (json = newsArray) =>
+    setNewsArray(
+      json.filter(({ id }) =>
+        deleteStoriesArray.every((deleteStoryId) => deleteStoryId !== id)
+      )
+    );
 
   const deleteNews = (postId) =>
     fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
@@ -75,11 +72,9 @@ const News = () => {
                   sx={{
                     m: 0,
                     ml: 'auto',
-                    // backgroundColor: 'primary.dark',
-                    // color: 'white',
                     '&:hover': {
-                      backgroundColor: 'primary.dark',
-                      color: 'black',
+                      backgroundColor: 'secondary.dark',
+                      color: 'white',
                       opacity: 0.9
                     }
                   }}
@@ -135,6 +130,15 @@ const News = () => {
             <Button
               variant='outlined'
               onClick={() => setStoryLimit(storyLimit + 5)}
+              color='secondary'
+              sx={{
+                '&:hover': {
+                  backgroundColor: 'secondary.dark',
+                  color: 'white',
+                  opacity: 0.9
+                },
+                mb: '120px'
+              }}
             >
               Get More
             </Button>
