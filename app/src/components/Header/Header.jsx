@@ -15,21 +15,21 @@ import {
   Link
 } from '@mui/material';
 
-import { styled } from '@mui/material/styles';
+// import { styled } from '@mui/material/styles';
 
-const StyledTypography = styled(Typography)(({ theme }) => ({
-  [theme.breakpoints.down('sm')]: {
-    color: 'orange',
-    paddingTop: '15px'
-  }
-}));
+// const StyledTypography = styled(Typography)(({ theme }) => ({
+//   [theme.breakpoints.down('sm')]: {
+//     color: 'orange',
+//     paddingTop: '15px'
+//   }
+// }));
 
-const StyledGrid = styled(Grid)(({ theme }) => ({
-  [theme.breakpoints.down('sm')]: {
-    color: 'orange',
-    spacing: 3
-  }
-}));
+// const StyledGrid = styled(Grid)(({ theme }) => ({
+//   [theme.breakpoints.down('sm')]: {
+//     color: 'orange',
+//     spacing: 3
+//   }
+// }));
 
 const Header = (props) => {
   const { user, t, changeLanguage, currentLng } = props;
