@@ -1,10 +1,8 @@
 import * as React from 'react';
 
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
-
-// import './App.css';
 
 import Main from './components/Main/Main';
 import News from './components/News/News';
@@ -24,7 +22,7 @@ const App = () => {
   };
 
   return (
-    <BrowserRouter>
+    <>
       <Header
         user={user}
         changeLanguage={changeLanguage}
@@ -42,7 +40,7 @@ const App = () => {
         ></Route>
         <Route path='*' element={<Error404 />}></Route>
       </Routes>
-    </BrowserRouter>
+    </>
   );
 };
 

@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { useState } from 'react';
+
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { NavLink } from 'react-router-dom';
 import { LoginForm } from '../Login/Login';
@@ -34,7 +37,10 @@ import {
 const Header = (props) => {
   const { user, t, changeLanguage, currentLng } = props;
 
-  const [alignment, setAlignment] = React.useState(currentLng);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [alignment, setAlignment] = useState(currentLng);
 
   const handleAlignment = (event, newAlignment) => {
     setAlignment(newAlignment);
