@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/newspaper-app/static/js/main.b3a13080.js",
+    "index.html": "/newspaper-app/index.html",
+    "main.b3a13080.js.map": "/newspaper-app/static/js/main.b3a13080.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.b3a13080.js"
+  ]
+}
