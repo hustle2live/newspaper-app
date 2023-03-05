@@ -1,5 +1,5 @@
-# newspaper-app - New Application create with 
-Use the next stack:
+# newspaper-app 
+- New Application create with the next stack:
 react, react-redux, @reduxjs/toolkit, react-i18next, material-ua, jsonplaceholder.typicode.com/
 
 ### `View the App (gh-page)`
