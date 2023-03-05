@@ -1,10 +1,12 @@
 ### `View the App (gh-page)`
 
-Runs the app by following the link  .\
+Runs the app by following the link
 ## [Click to](https://hustle2live.github.io/newspaper-app/) view in browser.
 
 
-
++++++++++++++++
++++++++++++++++
++++++++++++++++
 
 # Getting Started with Create React App
 
