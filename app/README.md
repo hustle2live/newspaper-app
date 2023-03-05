@@ -1,7 +1,7 @@
 ### `View the App (gh-page)`
 
 Runs the app by following the link (on my gh-pages) .\
-[Click to](https://hustle2live.github.io/newspaper-app/) to view in browser.
+[Click to](https://hustle2live.github.io/newspaper-app/) view in browser.
 
 
 
