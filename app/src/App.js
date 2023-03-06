@@ -16,7 +16,6 @@ const App = () => {
   const user = useSelector(selectUser);
 
   const { t, i18n } = useTranslation();
-
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };

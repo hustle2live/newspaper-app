@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteNews, increasePostsLimit } from '../../features/newsSlice';
 
 import {
   Container,
@@ -15,54 +17,26 @@ import {
 
 import Close from '@mui/icons-material/Close';
 
+import { fetchNews } from '../../features/newsSlice';
+
 const News = () => {
-  const [newsArray, setNewsArray] = useState([]);
-  const [storyLimit, setStoryLimit] = useState(5);
-  const [loadingStatusMessage, setloadingStatusMessage] =
-    useState('Loading ...');
-  const [deleteStoriesArray, setDeleteStoriesArray] = useState([]);
+  const { status, error, newsArray, postsLimit, removed } = useSelector(
+    (state) => state.news
+  );
 
-  const getNews = () => {
-    fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${storyLimit}`)
-      .then((response) =>
-        response.ok ? response.json() : Promise.reject(response)
-      )
-      .then((json) =>
-        deleteStoriesArray.length
-          ? filteringNewsState(json)
-          : setNewsArray(json)
-      )
-      .catch((error) => {
-        console.log(error);
-        setloadingStatusMessage(
-          'Error! Something goes wrong on Loading news...'
-        );
-      });
-  };
-
-  const filteringNewsState = (json = newsArray) =>
-    setNewsArray(
-      json.filter(({ id }) =>
-        deleteStoriesArray.every((deleteStoryId) => deleteStoryId !== id)
-      )
-    );
-
-  const deleteNews = (postId) =>
-    fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
-      method: 'DELETE'
-    }).then(setDeleteStoriesArray([...deleteStoriesArray, postId]));
+  const dispatch = useDispatch();
 
   const handleDeleteStory = (id) =>
     window.confirm('are you sure to delete this News story?')
-      ? deleteNews(id)
+      ? dispatch(deleteNews(id))
       : null;
 
-  useEffect(() => getNews(), [storyLimit]);
-
-  useEffect(() => filteringNewsState(), [deleteStoriesArray]);
+  useEffect(() => {
+    dispatch(fetchNews(postsLimit));
+  }, [postsLimit]);
 
   const StoryElementNews = () =>
-    newsArray
+    newsArray.length
       ? newsArray.map((item) => (
           <Grid item key={item.id} xs={1}>
             <Card sx={{ minWidth: 245, height: '100%' }}>
@@ -115,7 +89,21 @@ const News = () => {
         Here are the latest news!
       </Typography>
       <Container>
-        {newsArray && storyLimit !== 0 ? (
+        {status === 'loading' && (
+          <Typography
+            variant='h4'
+            component='p'
+            sx={{ position: 'absolute', left: '500px' }}
+          >
+            Loading...
+          </Typography>
+        )}
+        {error && (
+          <Typography variant='h4' component='p'>
+            An error occured : {error}
+          </Typography>
+        )}
+        {newsArray ? (
           <>
             {' '}
             <Grid
@@ -129,7 +117,7 @@ const News = () => {
             </Grid>
             <Button
               variant='outlined'
-              onClick={() => setStoryLimit(storyLimit + 5)}
+              onClick={() => dispatch(increasePostsLimit())}
               color='secondary'
               sx={{
                 '&:hover': {
@@ -144,7 +132,9 @@ const News = () => {
             </Button>
           </>
         ) : (
-          <p>{loadingStatusMessage}</p>
+          <Typography variant='h5' component='p'>
+            {status}
+          </Typography>
         )}
       </Container>
     </Container>
