@@ -20,7 +20,7 @@ Also secure page Profile without authorization.
 And loading News from jsonplaceholder by API.
 
 ###
-For checking authorization use the dext data:
+For checking authorization use the next data:
 
 login: admin
 
