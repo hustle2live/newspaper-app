@@ -1,7 +1,9 @@
 import * as React from 'react';
-
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
+import { useTranslation } from 'react-i18next';
+
 import { selectUser } from './features/userSlice';
 
 import Main from './components/Main/Main';
@@ -10,7 +12,8 @@ import Profile from './components/Profile/Profile';
 import Error404 from './components/Error/Error404';
 import Header from './components/Header/Header';
 
-import { useTranslation } from 'react-i18next';
+import './styles/global.module.scss'
+
 
 const App = () => {
   const user = useSelector(selectUser);

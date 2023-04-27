@@ -1,0 +1,26 @@
+// .Button {
+//    color: white;
+//    background-color: yellowgreen;
+
+//    &:global(.MuiButton-containedPrimary) {
+//       border: 2px solid yellowgreen;
+//       background-color: yellowgreen;
+//    }
+// }
+
+.CssTextField {
+   &:global(.MuiTextField-root .Mui-focused),
+   &:global(.MuiTextField-root) {
+      & label,
+      & input {
+         color: white;
+         font-weight: 300;
+      }
+
+      & fieldset,
+      & label,
+      &:hover fieldset {
+         border-color: white;
+      }
+   }
+}
