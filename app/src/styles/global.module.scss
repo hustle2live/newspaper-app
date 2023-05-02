@@ -24,3 +24,42 @@
       }
    }
 }
+
+.profile {
+   &__userPicture {
+      width: 150px;
+      height: 150px;
+
+      img {
+         width: 100%;
+         height: auto;
+         border-radius: 15px;
+      }
+   }
+
+   &__userName {
+      font-size: 24px;
+      margin: 20px 0 10px 0;
+   }
+
+   &__userDescription {
+      display: block;
+      max-width: 340px;
+      margin: 0 20px 0 0;
+
+      &_title {
+         color: #a5a5a5;
+         &:global(.MuiTypography-root) {
+            font-size: 16px;
+         }
+      }
+
+      &_text {
+         &:global(.MuiTypography-root) {
+            margin-top: 4px;
+            color: rgb(57, 57, 57);
+            font-size: 14px;
+         }
+      }
+   }
+}

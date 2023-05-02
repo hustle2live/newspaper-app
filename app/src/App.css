@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -22,8 +22,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
+} */
+/* 
 .App-link {
   color: #61dafb;
 }
@@ -39,9 +39,9 @@
 
 .active {
   color: orange;
-}
+} */
 
-nav ul li {
+/* nav ul li {
   display: inline-block;
   margin: 20px;
 }
@@ -52,8 +52,8 @@ nav {
 
 body {
   margin: 20px;
-}
-
+} */
+/* 
 button,
 p,
 ul,
@@ -180,4 +180,4 @@ input[type='password'] {
 button,
 input {
   cursor: pointer;
-}
+} */
