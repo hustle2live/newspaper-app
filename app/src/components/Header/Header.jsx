@@ -9,9 +9,7 @@ import { AppBar, Toolbar, Breadcrumbs, Grid, Typography, ToggleButton, ToggleBut
 
 const Header = (props) => {
    const { user, t, changeLanguage, currentLng } = props;
-
    const [alignment, setAlignment] = useState(currentLng);
-
    const handleAlignment = (event, newAlignment) => {
       setAlignment(newAlignment);
    };

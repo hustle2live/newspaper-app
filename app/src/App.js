@@ -25,7 +25,6 @@ const App = () => {
    return (
       <>
          <Header user={user} changeLanguage={changeLanguage} t={t} currentLng={i18n.language} />
-
          <Routes>
             <Route exact path='/' element={<Main />}></Route>
             <Route exact path='/news' element={<News />}></Route>
@@ -37,3 +36,4 @@ const App = () => {
 };
 
 export default App;
+

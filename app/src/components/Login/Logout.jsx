@@ -20,7 +20,7 @@ export const LogoutForm = (props) => {
          <Box>
             <Stack direction='row' spacing={2}>
                <Typography variant='p' copmonent='span' alignSelf='center'>
-                  Привіт, {user.name}
+                  {t('hello')}, {user.name}
                </Typography>
                <Avatar sx={{ bgcolor: deepOrange[500] }}></Avatar>
             </Stack>
