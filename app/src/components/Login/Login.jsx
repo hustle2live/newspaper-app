@@ -3,9 +3,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { login } from '../../features/userSlice';
+import { login } from '../../app/redux/userSlice';
 import { database as db } from '../../app/database';
-import { validateUser } from '../../app/validate';
+import { validateUser } from '../../app/userValidation/userValidation';
 import { Button, TextField, Typography, Box, Stack } from '@mui/material';
 
 import g from '../../styles/global.module.scss';

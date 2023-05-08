@@ -19,7 +19,6 @@ export const fetchNews = createAsyncThunk(
         `https://jsonplaceholder.typicode.com/posts?_limit=${limit}`
       );
       if (!response.ok) throw new Error('Server error');
-      console.log(response);
 
       const data = await response.json();
       return data;
@@ -40,7 +39,6 @@ export const deleteNews = createAsyncThunk(
         }
       );
       if (!response.ok) throw new Error("Server error. Can't delete news");
-      console.log('removed post # ' + postId);
 
       dispatch(removePost(postId));
     } catch (error) {

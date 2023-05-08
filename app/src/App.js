@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { selectUser } from './features/userSlice';
+import { selectUser } from './app/redux/userSlice';
 
 import Main from './components/Main/Main';
 import News from './components/News/News';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useSelector } from 'react-redux';
 import { Container, Typography, Box } from '@mui/material';
 
-import { selectUser } from '../../features/userSlice';
+import { selectUser } from '../../app/redux/userSlice';
 import UserPicture from '../../app/images/img_2.jpg';
 import styles from '../../styles/global.module.scss';
 

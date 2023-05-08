@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import userReducer from '../features/userSlice';
-import newsReducer from '../features/newsSlice';
+import userReducer from './redux/userSlice';
+import newsReducer from './redux/newsSlice';
 
 export default configureStore({
   reducer: {

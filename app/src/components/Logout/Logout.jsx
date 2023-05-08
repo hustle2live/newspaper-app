@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout, selectUser } from '../../features/userSlice';
+import { logout, selectUser } from '../../app/redux/userSlice';
 import { Button, Typography, Box, Stack, Avatar } from '@mui/material';
 import { deepOrange } from '@mui/material/colors';
 

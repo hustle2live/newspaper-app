@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { NavLink } from 'react-router-dom';
 import { LoginForm } from '../Login/Login';
-import { LogoutForm } from '../Login/Logout';
+import { LogoutForm } from '../Logout/Logout';
 
 import { AppBar, Toolbar, Breadcrumbs, Grid, Typography, ToggleButton, ToggleButtonGroup, Link } from '@mui/material';
 
