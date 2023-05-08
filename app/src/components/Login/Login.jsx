@@ -8,9 +8,7 @@ import { database as db } from '../../app/database';
 import { validateUser } from '../../app/validate';
 import { Button, TextField, Typography, Box, Stack } from '@mui/material';
 
-import g from '../../styles/global.module.scss'
-
-import '../../styles/global.module.scss'
+import g from '../../styles/global.module.scss';
 
 export const LoginForm = (props) => {
    const [username, setUsername] = useState('');
@@ -19,7 +17,7 @@ export const LoginForm = (props) => {
    const navigate = useNavigate();
    const dispatch = useDispatch();
 
-   const t = props.t;
+   const { t, setLoginMessage, handleClick } = props;
 
    const onChangeUsername = (e) => {
       const username = e.target.value;
@@ -42,10 +40,10 @@ export const LoginForm = (props) => {
       if (validateUser(db, userData)) {
          dispatch(login(userData));
          localStorage.setItem('user', JSON.stringify(userData));
-         return navigate('/profile');
+         setLoginMessage('success');
+         navigate('/profile');
       }
-
-      return alert(t('login-error'));
+      return handleClick();
    };
 
    return (
@@ -101,11 +99,11 @@ export const LoginForm = (props) => {
 
          <Box alignSelf={'center'} sx={{ p: 0, m: { xs: 0, sm: 1 } }}>
             <Button
+               onClick={(e) => handleSubmit(e)}
                id='submit-btn'
                type='submit'
                size='small'
                variant='standart'
-               onClick={(e) => handleSubmit(e)}
                sx={{ p: { xs: '10px 0', sm: 1 } }}
             >
                {t('submit')}

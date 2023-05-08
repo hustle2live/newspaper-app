@@ -7,11 +7,25 @@ import { LogoutForm } from '../Login/Logout';
 
 import { AppBar, Toolbar, Breadcrumbs, Grid, Typography, ToggleButton, ToggleButtonGroup, Link } from '@mui/material';
 
+import Alert from '../Alert/Alert';
+
 const Header = (props) => {
    const { user, t, changeLanguage, currentLng } = props;
    const [alignment, setAlignment] = useState(currentLng);
    const handleAlignment = (event, newAlignment) => {
       setAlignment(newAlignment);
+   };
+
+   const [open, setOpen] = useState(false);
+   const [loginMessage, setLoginMessage] = useState('');
+
+   const showAlert = () => {
+      setOpen(true);
+   };
+
+   const closeAlert = (event, reason) => {
+      // if (reason === 'clickaway') return; // Do not close alert by click anywhere feature
+      setOpen(false);
    };
 
    return (
@@ -59,7 +73,11 @@ const Header = (props) => {
                </Grid>
 
                <Grid item xs={8} sm={4.5} md={5} m={'auto'} mb={1} sx={{ order: { xs: -1, sm: 0 } }}>
-                  {user ? <LogoutForm t={t} /> : <LoginForm t={t} />}
+                  {user ? (
+                     <LogoutForm t={t} setLoginMessage={setLoginMessage} />
+                  ) : (
+                     <LoginForm t={t} handleClick={showAlert} setLoginMessage={setLoginMessage} />
+                  )}
                </Grid>
 
                <Grid
@@ -92,6 +110,7 @@ const Header = (props) => {
                </Grid>
             </Grid>
          </Toolbar>
+         <Alert open={open} handleClose={closeAlert} loginMessage={loginMessage} />
       </AppBar>
    );
 };

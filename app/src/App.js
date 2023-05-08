@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
 import { useTranslation } from 'react-i18next';
 
 import { selectUser } from './features/userSlice';
@@ -36,4 +35,3 @@ const App = () => {
 };
 
 export default App;
-

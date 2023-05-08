@@ -7,12 +7,13 @@ import { deepOrange } from '@mui/material/colors';
 export const LogoutForm = (props) => {
    const user = useSelector(selectUser);
    const dispatch = useDispatch();
-   const t = props.t;
+   const { t, setLoginMessage } = props;
 
    const handleLogout = (e) => {
       e.preventDefault();
       dispatch(logout());
       localStorage.removeItem('user');
+      setLoginMessage('');
    };
 
    return (
