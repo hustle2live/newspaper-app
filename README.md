@@ -22,10 +22,11 @@ Runs the app by following the link
 
 
 +++++++++++++++
+![online vocabulary](https://github.com/hustle2live/newspaper-app/blob/main/img/img-1.jpg?raw=true)
 +++++++++++++++
+![online vocabulary](https://github.com/hustle2live/newspaper-app/blob/main/img/img-2.jpg?raw=true)
 +++++++++++++++
-
-
+![online vocabulary](https://github.com/hustle2live/newspaper-app/blob/main/img/img-3.jpg?raw=true)
 
 
 
