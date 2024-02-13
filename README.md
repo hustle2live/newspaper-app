@@ -1,29 +1,31 @@
-# newspaper-app 
-- New Application create with the next stack:
-react, react-redux, @reduxjs/toolkit, react-i18next, material-ua, jsonplaceholder.typicode.com/
+# Newspaper-app 
+Application created with the next stack:
+`react, react-redux, @reduxjs/toolkit, react-i18next, material-ua, jsonplaceholder.typicode.com`
 
-### `View the App (gh-page)`
-
-Runs the app by following the link
-## [Click to](https://hustle2live.github.io/newspaper-app/) view in browser.
-
-
-+++++++++++++++
-+++++++++++++++
-+++++++++++++++
-
-
-The application saves login session in Local Storage.
-
-Also secure page Profile without authorization.
-
-And loading News from jsonplaceholder by API.
+#### In this app I've developed the next features:
+- Loading News from jsonplaceholder by API.
+- User's validation and Login process;
+- Loading and Deleting News with redux dispatchers;
+- Two interface translations (Uk & En) with react-i18next;
+- The application saves login session in Local Storage;
+- Secure Profile Page without authorization;
+- Material UI (MUI) Design components, React Library.
 
 ###
 For checking authorization use the next data:
+login: `admin`
+password: `12345`
 
-login: admin
+### `View the App on my github-io`
+Runs the app by following the link 
+### Click to [view DEMO in browser](https://hustle2live.github.io/newspaper-app/) .
 
-password: 12345
+
++++++++++++++++
++++++++++++++++
++++++++++++++++
+
+
+
 
 
