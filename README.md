@@ -7,8 +7,9 @@ Application created with the next stack:
 - User's validation and Login process;
 - Loading and Deleting News with redux dispatchers;
 - Two interface translations (Uk & En) with react-i18next;
-- The application saves login session in Local Storage.
-- Secure Profile Page without authorization.
+- The application saves login session in Local Storage;
+- Secure Profile Page without authorization;
+- Material UI (MUI) Design components, React Library.
 
 ###
 For checking authorization use the next data:
