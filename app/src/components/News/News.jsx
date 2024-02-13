@@ -76,7 +76,7 @@ const News = () => {
 
    return (
       <Container>
-         <Typography variant='h2' component='h2'>
+         <Typography mt={2} variant='h2' component='h2'>
             News Page
          </Typography>
          <Typography variant='body1' component='p'>
